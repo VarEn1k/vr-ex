@@ -220,11 +220,16 @@
     ] );
     const controlLineGeometry2 = new THREE.BufferGeometry().setFromPoints( [
      new THREE.Vector3( .2, .2, -1 ),
-     new THREE.Vector3( .2, -.2, -1 ),
-     new THREE.Vector3( -.2, -.2, -1 ),
-     new THREE.Vector3( -.2, .2, -1 ),
-     new THREE.Vector3( .2, .2, -1 ),
-    ], );
+      new THREE.Vector3( .2, -.2, -1 ),
+      new THREE.Vector3( -.2, -.2, -1 ),
+      new THREE.Vector3( -.2, .2, -1 ),
+      new THREE.Vector3( .1, .1, -.5 ),
+      new THREE.Vector3( .1, .1, -.5 ),
+      new THREE.Vector3( .1, -.1, -.5 ),
+      new THREE.Vector3( -.1, -.1, -.5 ),
+      new THREE.Vector3( -.1, .1, -.5 ),
+      new THREE.Vector3( .1, .1, -.5 ),
+    ],  );
 
     const controlLine = new THREE.Line( controlLineGeometry );
     const controlLine2 = new THREE.Line( controlLineGeometry2 );
@@ -237,8 +242,13 @@
     gripGroup.add(controlLine2)
 
     // controller1.add( controlLine.clone() );
-    controller1.add( gripGroup );
-    controller2.add( gripGroup.clone() );
+    controller1.add( gripGroup.clone() );
+    const controlLineMaterial = new THREE.LineBasicMaterial({color: 0x26c2b4, linewidth: 5})
+//    const controlLineMaterial = new THREE.LineBasicMaterial( { color: 0x0000ff } );
+
+    controlLine.material = controlLineMaterial
+
+    controller2.add( gripGroup );
     window.addEventListener( 'resize', onWindowResize, false );
 
   }
